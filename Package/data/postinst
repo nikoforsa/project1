@@ -1,0 +1,7 @@
+#!/bin/bash
+
+chown -R {USERNAME}:{USERNAME} {APPFOLDER}
+#chown -R admin:admin /opt/project1
+chmod ugo-x /etc/systemd/system/{APPNAME}*
+
+exit 0

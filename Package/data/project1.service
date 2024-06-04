@@ -1,0 +1,23 @@
+[Unit]
+Description=project1 service
+After=syslog.target network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+PIDFile={APPFOLDER}/{APPNAME}.pid
+ExecStart={APPFOLDER}/{APPNAME}
+WorkingDirectory={APPFOLDER}
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s 15 $MAINPID
+RemainAfterExit=yes
+User={USERNAME}
+Group={USERNAME}
+Restart=always
+RestartSec=30
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n
+
